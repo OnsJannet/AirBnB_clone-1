@@ -25,9 +25,7 @@ class FileStorage:
     __objects = {}
 
     def all(self, cls=None):
-        '''
-            Return the dictionary
-        '''
+        """ Return the dictionary """
         fs_objects = {}
         if cls:
             if type(cls) is str and cls in classes:
@@ -63,9 +61,7 @@ class FileStorage:
             json.dump(objects_dict, fd)
 
     def reload(self):
-        '''
-            Deserializes the JSON file to __objects.
-        '''
+        """ Deserializes the JSON file to __objects"""
         try:
             with open(FileStorage.__file_path, encoding="UTF8") as fd:
                 FileStorage.__objects = json.load(fd)
@@ -87,7 +83,7 @@ class FileStorage:
         self.save()
 
     def close(self):
-        """ 
+        """
         close with reload
         """
         self.reload()
