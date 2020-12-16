@@ -16,7 +16,7 @@ class FileStorage:
         for key, values in FileStorage.__objects.items():
                 if values.__class__ == cls:
                     new_dict[key] = values
-            return new_dict
+        return new_dict
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
@@ -42,16 +42,16 @@ class FileStorage:
         from models.review import Review
 
         classes = {
-                    'BaseModel': BaseModel, 'User': User, 'Place': Place,
-                    'State': State, 'City': City, 'Amenity': Amenity,
-                    'Review': Review
-                  }
+            'BaseModel': BaseModel, 'User': User, 'Place': Place,
+            'State': State, 'City': City, 'Amenity': Amenity,
+            'Review': Review
+            }
         try:
             temp = {}
             with open(FileStorage.__file_path, 'r') as f:
                 temp = json.load(f)
                 for key, val in temp.items():
-                        self.all()[key] = classes[val['__class__']](**val)
+                    self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
 
@@ -61,3 +61,4 @@ class FileStorage:
         if unwanted in FileStorage.__objects.keys():
             del(FileStorage.__objects[unwanted])
             self.save()
+
