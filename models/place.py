@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" Review module for the HBNB  """
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey, Integer, Float, Table
 from sqlalchemy.orm import relationship
@@ -19,9 +20,9 @@ if storage_type == 'db':
 
 
 class Place(BaseModel, Base):
-    '''
+    """
         Define the class Place that inherits from BaseModel.
-    '''
+    """
     __tablename__ = 'places'
     if storage_type == 'db':
         city_id = Column(String(60), ForeignKey("cities.id"), nullable=False)
