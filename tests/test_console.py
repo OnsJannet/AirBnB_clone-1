@@ -26,6 +26,24 @@ def do_EOF(self):
     c = self.create()
     self.assertTrue(c.onecmd("EOF"))
 
+def create(self):
+    """ create an instance of the HBNBCommand class"""
+    return HBNBCommand()
+
+def test_all(self):
+    """ Test all exists """
+    c = self.create()
+    c.onecmd("all")
+    self.assertTrue(isinstance(self.capt_out.getvalue(), str))
+
+def test_class_name(self):
+        """
+            Testing the error msg .
+        """
+        console = self.create()
+        console.onecmd("create")
+        x = (self.capt_out.getvalue())
+        self.assertEqual("** class name missing **\n", x)
 
 if __name__ == '__main__':
     unittest.main()
