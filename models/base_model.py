@@ -50,7 +50,6 @@ class BaseModel:
                 if "__class__" not in key:
                     setattr(self, key, val)
 
-    
     def __repr__(self):
         '''
             Return string representation of BaseModel class
