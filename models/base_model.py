@@ -50,19 +50,14 @@ class BaseModel:
                 if "__class__" not in key:
                     setattr(self, key, val)
 
-    def __str__(self):
-        '''
-            Return string representation of BaseModel class
-        '''
-        return ("[{}] ({}) {}".format(self.__class__.__name__,
-                                      self.id, self.__dict__))
-
+    
     def __repr__(self):
         '''
             Return string representation of BaseModel class
         '''
-        return ("[{}] ({}) {}".format(self.__class__.__name__,
-                                      self.id, self.__dict__))
+        my_dict = self.__dict__.copy()
+        my_dict.pop("_sa_instance_state", None)
+        return "[{}] ({}) {}".format(type(self).__name__, self.id, my_dict)
 
     def save(self):
         '''
@@ -80,9 +75,13 @@ class BaseModel:
         cp_dct['__class__'] = self.__class__.__name__
         cp_dct['updated_at'] = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
         cp_dct['created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        if '_sa_instance_state' in cp_dct:
+        if "_sa_instance_state" in cp_dct:
             del cp_dct['_sa_instance_state']
         return cp_dct
 
     def delete(self):
+        """
+        to delete the current instance from the storage \
+        (models.storage) by calling the method delete
+        """
         models.storage.delete(self)
