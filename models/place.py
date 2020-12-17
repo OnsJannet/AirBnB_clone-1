@@ -20,9 +20,11 @@ class Place(BaseModel, Base):
     longitude = Column(Float, nullable=False)
     places = relationship("Place", backref="cities",
                           cascade="all, delete-orphan")
-    
-    place_amenity = Table('place_amenity', Base.metadata,
-    Column('place_id', String(60), ForeignKey('places.id'), nullable=False),
-    Column('amenity_id', String(60), ForeignKey('amenities.id'), nullable=False)
-)
 
+    place_amenity = Table('place_amenity', Base.metadata,
+                          Column('place_id', String(60),
+                                 ForeignKey('places.id'),
+                                 primary_key=True, nullable=False),
+                          Column('amenity_id', String(60),
+                                 ForeignKey('amenities.id'),
+                                 primary_key=True, nullable=False))
