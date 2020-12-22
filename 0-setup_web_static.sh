@@ -15,5 +15,5 @@ sudo echo "<html>
 </html>" | sudo tee /data/web_static/releases/test/index.html
 sudo ln -sfn /data/web_static/current /data/web_static/releases/test/
 sudo chown ubuntu:ubuntu /data
-sudo sed -i '53i \\tlocation \/hbnb_static {\n\t\t alias /data/web_static/current;\n\t}' /etc/nginx/sites-available/default
+sudo sed -i '35i \\tlocation \/hbnb_static {\n\t\t alias /data/web_static/current;\n\t}' /etc/nginx/sites-available/default
 service nginx restart
