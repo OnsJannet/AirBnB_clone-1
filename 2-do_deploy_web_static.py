@@ -5,14 +5,14 @@ from fabric.operations import run, put, sudo
 import os.path
 
 env.hosts = ['35.237.62.23', '35.227.78.73']
-env.user = 'ubuntu' 
+env.user = 'ubuntu'
 
 
 def do_deploy(archive_path):
     """ distributes an archive to a web server """
     if (os.path.exists(archive_path) is False):
         return False
-    
+
     try:
         i = archive_path.split("/")[-1]
         j = ("/data/web_static/releases/" + i.split(".")[0])
@@ -26,6 +26,5 @@ def do_deploy(archive_path):
         run('sudo rm -rf /data/web_static/current')
         run("sudo ln -s {} /data/web_static/current".format(j))
         return True
-    except:
+    except Exception:
         return False
-    
