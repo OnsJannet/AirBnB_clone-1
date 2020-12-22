@@ -12,8 +12,10 @@ sudo echo "<html>
   <body>
     Holberton School
   </body>
-</html>" | sudo tee /data/web_static/releases/test/index.html
-sudo ln -sfn /data/web_static/current /data/web_static/releases/test/
-sudo chown ubuntu:ubuntu /data
-sudo sed -i '53i \\tlocation \/hbnb_static {\n\t\t alias /data/web_static/current;\n\t}' /etc/nginx/sites-available/default
-service nginx restart
+</html>" | sudo tee /data/web_static/releases/test/index.html 
+sudo rm -f -R /data/web_static/current
+sudo ln -sf /data/web_static/current /data/web_static/releases/test/
+sudo chown -R ubuntu:ubuntu /data/
+MSG="\\\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}\n"
+sudo sed -i "53i $MSG" /etc/nginx/sites-available/default
+sudo service nginx restart
