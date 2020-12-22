@@ -10,7 +10,6 @@ env.hosts = ['35.237.62.23', '35.227.78.73']
 env.user = 'ubuntu'
 
 
-
 def do_pack():
     """ generates .tgz """
     date = datetime.utcnow().strftime("%Y%m%d%H%M%S")
@@ -18,6 +17,7 @@ def do_pack():
     file = "versions/web_static_{}.tgz".format(date)
     local("sudo tar -cvzf versions/web_static_{}.tgz web_static/".format(date))
     return file
+
 
 def do_deploy(archive_path):
     """ distributes an archive to a web server """
@@ -39,6 +39,7 @@ def do_deploy(archive_path):
         return True
     except Exception:
         return False
+
 
 def deploy():
     """ creates and distributes an archive to a web servers """
