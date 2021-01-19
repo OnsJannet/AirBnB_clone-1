@@ -86,4 +86,4 @@ class FileStorage:
         """
         close with reload
         """
-        return self.reload()
+        self.reload()
