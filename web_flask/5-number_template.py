@@ -25,11 +25,6 @@ def python(text="is cool"):
     return "Python %s" % text.replace('_', ' ')
 
 
-@app.route('/number/<int:n>', strict_slashes=False)
-def number(n):
-    return "%d is a number" % n
-
-
 @app.route('/number_template/<int:n>', strict_slashes=False)
 def number_template(n):
     return render_template('5-number.html', n=n)
