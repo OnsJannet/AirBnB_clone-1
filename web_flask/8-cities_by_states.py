@@ -13,8 +13,7 @@ app = Flask(__name__)
 def cities_list():
     states = storage.all(State)
     cities = storage.all(City)
-    return render_template('8-cities_by_states.html', states=all_states,
-                           cities=all_cities)
+    return render_template('8-cities_by_states.html', states=all_states, cities=all_cities)
 
 
 @app.teardown_appcontext
