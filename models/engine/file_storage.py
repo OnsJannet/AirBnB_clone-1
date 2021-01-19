@@ -86,4 +86,4 @@ class FileStorage:
         """
         close with reload
         """
-        reload()
+        self.__session.reload()
