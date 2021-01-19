@@ -25,7 +25,7 @@ def python(text="is cool"):
     return "Python %s" % text.replace('_', ' ')
 
 
-@app.route('/number/', strict_slashes=False)
+
 @app.route('/number/<int:n>', strict_slashes=False)
 def number(n):
     return "%d is a number" % n
