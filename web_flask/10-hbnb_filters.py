@@ -15,7 +15,7 @@ app = Flask(__name__)
 def hbnb_filters():
     all_states = storage.all(State)
     all_amenities = storage.all(Amenity)
-    return render_template('10-hbnb_filters.html', states=all_states, 
+    return render_template('10-hbnb_filters.html', states=all_states,
                            amenities=all_amenities)
 
 
