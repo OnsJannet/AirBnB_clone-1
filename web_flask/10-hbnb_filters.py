@@ -13,6 +13,7 @@ app = Flask(__name__)
 
 @app.route('/hbnb_filters', strict_slashes=False)
 def hbnb_filters():
+    ''' display 6-index.html '''
     all_states = storage.all(State)
     all_amenities = storage.all(Amenity)
     return render_template('10-hbnb_filters.html', states=all_states,
@@ -21,6 +22,7 @@ def hbnb_filters():
 
 @app.teardown_appcontext
 def teardown_appcontext(self):
+    ''' closes storage '''
     return storage.close()
 
 
