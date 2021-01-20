@@ -24,7 +24,7 @@
 						{% for state in states | sort(attribute="name") %}
 						<li><h2>{{state.name}}</h2></li>
 						<li>
-							<ul class="popover_li">
+							<ul>
 								{% for city in state.cities | sort(attribute="name") %}
 								<li>{{ city.name }}</li>
 								{% endfor %}
