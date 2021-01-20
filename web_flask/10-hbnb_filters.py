@@ -11,9 +11,8 @@ from models import storage
 app = Flask(__name__)
 
 
-@app.route('/states', strict_slashes=False)
-@app.route('/states/<id>', strict_slashes=False)
-def state(id=None):
+@app.route('/hbnb_filters', strict_slashes=False)
+def hbnb_filters(id=None):
     all_states = storage.all(State)
     all_amenities = storage.all(Amenity)
     return render_template('10-hbnb_filters.html', states=all_states, 
