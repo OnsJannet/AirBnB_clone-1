@@ -12,6 +12,7 @@
             {% endfor %}
         </UL>
         {% elif s_id in states%}
+        {% set state = states[s_id] %}
         <H1>State: {{ state.name }}</H1>
         <H3>Cities:</H3>
         <UL>
