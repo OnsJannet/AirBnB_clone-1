@@ -4,6 +4,7 @@
 from flask import Flask
 from flask import render_template
 from models.state import State
+from models.state import City
 from models import storage
 
 app = Flask(__name__)
