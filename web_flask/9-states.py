@@ -12,7 +12,7 @@ app = Flask(__name__)
 @app.route('/states', strict_slashes=False)
 @app.route('/states/<id>', strict_slashes=False)
 def state(id=None):
-    if id != None:
+    if id is not None:
         s_id = "State.{}".format(id)
 
     all_states = storage.all(State)
